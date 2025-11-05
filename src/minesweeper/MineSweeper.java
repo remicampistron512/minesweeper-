@@ -51,11 +51,20 @@ public class MineSweeper {
 	}
 
 	public static void printGrid(int rows, int cols) {
+		
+		System.out.print(" ".repeat(3));
+		for (int j =0; j<cols;j++) {
+			 System.out.printf("%3d", j);
+		}
+		 System.out.println();
+		
 		for(int i = 0; i<rows; i++) {
-			for (int j =0; j<cols;j++) {
-				System.out.print("+");
-				
+			System.out.printf("%3d", i);
+			for (int j =0; j<cols;j++) {						
+				System.out.printf("%3s", "+");
 			}
+				
+			
 			System.out.println();
 		}
 	}

@@ -97,25 +97,26 @@ public class MineSweeper {
         return -1;
       }
 
-      if (!userInputString.isEmpty()) {
-        // contrôle si tous les charactères sont des chiffres
-        boolean allDigits = true;
-        for (int i = 0; i < userInputString.length(); i++) {
-          if (!Character.isDigit(userInputString.charAt(i))) {
-            allDigits = false;
-            break;
-          }
-        }
-        if (allDigits) {
+      if (!userInputString.isEmpty() && isAllDigits(userInputString)) {
           // contrôle que les valeurs données sont bien entre les bornes fournies
           int val = Integer.parseInt(userInputString);
           if (val >= min && val <= max) {
             return val;
           }
         }
-      }
+
       System.out.println("Entrez un entier entre " + min + " et " + max + ".");
     }
+  }
+
+  private static boolean isAllDigits(String userInputString) {
+    // contrôle si tous les caractères sont des chiffres
+    for (int i = 0; i < userInputString.length(); i++) {
+      if (!Character.isDigit(userInputString.charAt(i))) {
+        return false;
+      }
+    }
+    return true;
   }
 
 
@@ -161,7 +162,7 @@ public class MineSweeper {
     System.out.println();
     boolean isaBomb;
     boolean isDiscovered;
-    for (int i = 0; i < rows; i++) {
+    for (int i = 0; i < rws; i++) {
       System.out.printf("%3d", i);
       for (int j = 0; j < cols; j++) {
         isaBomb = false;

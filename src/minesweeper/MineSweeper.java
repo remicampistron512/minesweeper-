@@ -30,9 +30,14 @@ public class MineSweeper {
     // nombre de bombes
     int nbBombs = 9;
 
+
+    // générateur de nombres aléatoires
+
+    Random ran = new Random();
+
     // remplit la hasmap des coordonnées des bombes
     for (int i = 0; i < nbBombs; i++) {
-      bombs.put(i, calculateBombPosition(bombs, rows, cols));
+      bombs.put(i, calculateBombPosition(bombs, rows, cols,ran));
     }
 
     // Affiche la grille
@@ -114,10 +119,10 @@ public class MineSweeper {
   }
 
 
-  private static int[] calculateBombPosition(Map<Integer, int[]> bombs, int rows, int cols) {
+  private static int[] calculateBombPosition(Map<Integer, int[]> bombs, int rows, int cols,Random ran) {
     /* donne des coordonnées aléatoires a chaque bombe, si les coordonnées existent déja dans la
     map bombs on reboucle*/
-    Random ran = new Random();
+
 
     while (true) {
       int posX = ran.nextInt(cols);

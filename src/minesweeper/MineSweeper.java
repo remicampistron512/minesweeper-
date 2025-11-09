@@ -166,18 +166,8 @@ public class MineSweeper {
       for (int j = 0; j < cols; j++) {
         isaBomb = false;
         isDiscovered = false;
-        for (int[] bombArr : bombs.values()) {
-          if (bombArr[0] == j && bombArr[1] == i) {
-            isaBomb = true;
-            break;
-          }
-        }
-        for (int[] movesArr : playerMoves.values()) {
-          if (movesArr[0] == j && movesArr[1] == i) {
-            isDiscovered = true;
-            break;
-          }
-        }
+        isaBomb = isBomb(bombs, j, i, isaBomb);
+        isDiscovered = isDiscovered(playerMoves, j, i, isDiscovered);
         int nbBombs = nbBombsAround(i, j, bombs);
         if (isaBomb) {
           System.out.printf("%3s", "B");
@@ -190,6 +180,27 @@ public class MineSweeper {
 
       System.out.println();
     }
+  }
+
+  private static boolean isDiscovered(Map<Integer, int[]> playerMoves, int j, int i,
+      boolean isDiscovered) {
+    for (int[] movesArr : playerMoves.values()) {
+      if (movesArr[0] == j && movesArr[1] == i) {
+        isDiscovered = true;
+        break;
+      }
+    }
+    return isDiscovered;
+  }
+
+  private static boolean isBomb(Map<Integer, int[]> bombs, int j, int i, boolean isaBomb) {
+    for (int[] bombArr : bombs.values()) {
+      if (bombArr[0] == j && bombArr[1] == i) {
+        isaBomb = true;
+        break;
+      }
+    }
+    return isaBomb;
   }
 
 

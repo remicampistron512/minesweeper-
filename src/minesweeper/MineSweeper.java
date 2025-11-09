@@ -162,7 +162,7 @@ public class MineSweeper {
     System.out.println();
     boolean isaBomb;
     boolean isDiscovered;
-    for (int i = 0; i < rws; i++) {
+    for (int i = 0; i < rows; i++) {
       System.out.printf("%3d", i);
       for (int j = 0; j < cols; j++) {
         isaBomb = false;
